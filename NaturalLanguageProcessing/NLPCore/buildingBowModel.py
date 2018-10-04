@@ -1,6 +1,7 @@
 import nltk
 import re
 import heapq
+import numpy as np
 # nltk.download()
 paragraph = """Thank you all so very much. Thank you to the Academy. 
               Thank you to all of you in this room. I have to congratulate 
@@ -49,8 +50,28 @@ for sent in sentences:
         else:
             wordToCount[word] += 1
 
-# used to create an array of the 100 most frequent of the wordToCountdictionary
+# used to create an array of the 100 most frequent of the wordToCount
 freq_words = heapq.nlargest(100, wordToCount, key=wordToCount.get)
 
-print(wordToCount)
-print(freq_words)
+#will contain bag of words model
+# documents will be represented as vectors of length 100(our top frequent words)
+# if word appears, it is a 1, if not it is a 0
+X = []
+
+for sent in sentences:
+    # for each iteration vector will contain all day pre sentence
+    vector = []
+    for word in freq_words:
+        # if frequent word is in one of the sentences we add 1 to the vector else we add a 0
+        if word in nltk.word_tokenize(sent):
+            vector.append(1)
+        else:
+            vector.append(0)
+    # append the vector for every sentence into X making it a multidimensional list of word appearences
+    X.append(vector)
+
+# use numpy to covert X into a 2Darray
+X = np.array(X)
+# print(wordToCount)
+# print(freq_words)
+print(X)
