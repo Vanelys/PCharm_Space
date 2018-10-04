@@ -1,8 +1,8 @@
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 # list comprehensions can be used to iterate over and display list items
-sum = [num for num in numbers]
-print(sum)
+Sum = [num for num in numbers]
+print(Sum)
 
 # can also be used to filter out list items with conditionals
 newNums = [nums for nums in numbers if nums <= 6]
@@ -24,15 +24,15 @@ print(odds)
 squareGen = (nums**2 for nums in numbers)
 print(squareGen)
 
-myDict = {"apple":1, "orange":4, "banana":10}
+myDict = {"apple": 1, "orange": 4, "banana": 10}
 
 # dictionary comprehension
           #key: value
-newDict = {key:myDict[key] for key in myDict.keys()}
+newDict = {key: myDict[key] for key in myDict.keys()}
 print(newDict)
 
 # filtering dictionary values
-newDictTwo = {key:myDict[key] for key in myDict.keys() if myDict[key] >= 5}
+newDictTwo = {key: myDict[key] for key in myDict.keys() if myDict[key] >= 5}
 print(newDictTwo)
 
 # jpin() to concat strings with specific delimiters
